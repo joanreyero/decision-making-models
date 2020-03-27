@@ -30,14 +30,37 @@
 
 \subsection{Data exploration}
 
+Before attempting to fit a model some data exploration was performed. Figure \ref{fig:2.1} shows the number of times each participant chose stimulus $A$, and the total number of rewards obtained. While participants who chose more times stimulus $A$ tend to have higher rewards, there is not a clear pattern observable in the figure. 
 
 \begin{figure}[h!]
 	\centering
 	\hspace*{-0.6in}
 	\includegraphics[width=1.2\linewidth]{figures/2.1.pdf}
-	\caption{Inputs received by unisensory neurons. (A) Inputs received by auditory-area neurons for a stimulus placed on $(100,5)$cm. (B) Inputs received by tactile-area neurons for a stimulus placed on $(10,5)$cm, the centre of the tactile area.}
-	\label{fig:3.1}
+	\caption{Plot of the total number of rewards and the number of times a participant chose stimulus $A$ for each participant.}
+	\label{fig:2.1}
 \end{figure}
+
+The table below summarises the basic statistics for the studied variables. $A$ was chosen more than $50\%$ of the times, which is not surprising as, on average, choice $A$ had a higher probability of reward. The mean total rewards was 153.5, which is 64\% of the total.
+
+The expected number of rewards if random choices were made can be obtained my
+
+\[ \frac{\big(P(\mathrm{R} | A^1) + P(\mathrm{R} | B^1) + P(\mathrm{R} | A^2) + P(\mathrm{R} | B^2)\big) \times 100}{4} = 56.25 \]
+
+Therefore, the expected number of rewards is lower than the average rewards obtained, which suggests that learning happened during the experiment.
+
+\begin{center}
+ \begin{tabular}{|c || c | c | c|} 
+ \hline
+  & Mean (out of 240) & Standard deviation & Range (out of 240) \\ [0.5ex] 
+ \hline\hline
+ Times $A$ was chosen & 141.0 & 20.31 & $[108, 200]$ \\ 
+ \hline
+ Total rewards & 153.5 & 6.63 & $[134,166]$ \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+
 
 \bibliography{bib}
 
