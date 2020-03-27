@@ -114,7 +114,7 @@ The mean learning rate (LR) found was 0.36, with a standard deviation of 0.123. 
 \begin{figure}[h!]
 	\centering
 	\hspace*{-0.6in}
-	\includegraphics[width=1.2\linewidth]{figures/2.4.pdf}
+	\includegraphics[width=1.1\linewidth]{figures/2.4.pdf}
 	\caption{Best-fit learning rate (top) and negative energy (bottom) for healthy and MDD participants. The participants with 0 values were filtered-out because the best-fits were outside the normal range of $(0,1)$ for the LR and $(1, 15)$ for the NE.}
 	\label{fig:2.4}
 \end{figure}
@@ -159,9 +159,15 @@ There is only a 0.19 probability that the null hypothesis is true for the LR, th
 
 On the other hand, for the NE there is a 0.51 probability that the null hypothesis is true. Thus, we cannot accept nor reject the null hypothesis or establish a difference between groups.
 
+\subsection{Parameter recovery}
 
+For the parameter recovery 53 pairs of parameters were obtained randomly from a normal distribution. Then, 53 data-sets instances of 10 participants each were simulated. For each instance, the average best-fit parameters were computed.
 
+Figure \ref{fig:2.5.0} shows the distribution of the starting LRs and NEs. There are no values outside the expected ranges, thus no values were re-sampled.
 
+The Pearson correlation coefficient between the starting and the best-fit LRs is 0.56, with a p-value of $10^{-16}$ there is a strong correlation with a very small probability that there is no correlation.
+
+For the NEs, the Pearson correlation coefficient is 0.89 with a p-value of $10^{-19}$: the correlation is even stronger with a negligent probability that there is no correlation. The same information is illustrated in figure \ref{fig:2.5.1}
 
 
 
