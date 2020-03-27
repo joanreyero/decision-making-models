@@ -111,6 +111,14 @@ The minimisation algorithm encountered an overflow for most participants when ru
 
 The mean learning rate (LR) found was 0.36, with a standard deviation of 0.123. The mean negative energy (NE) was 5.83, with a standard deviation of 1.25. 
 
+\begin{figure}[h!]
+	\centering
+	\hspace*{-0.6in}
+	\includegraphics[width=1.2\linewidth]{figures/2.4.pdf}
+	\caption{Best-fit learning rate (top) and negative energy (bottom) for healthy and MDD participants. The participants with 0 values were filtered-out because the best-fits were outside the normal range of $(0,1)$ for the LR and $(1, 15)$ for the NE.}
+	\label{fig:2.4}
+\end{figure}
+
 Figure \ref{fig:2.4} shows the best-fit LR an NE for each participant, with considerably more variability in the MDD participants than in the healthy. It can also be observed that participant 8 has a value of 0 for both the LR and NE, this is because a filtering function was implemented to remove from the best-fit parameters those participants who did not fall within the normal range. The zero values seen in the plot are simply to keep the number of the participants constant, they were not taken into account for the reported statistics. 
 
 Furthermore, the Pearson correlation coefficient was computed for all participants, and for the healthy and MDD participants together. The results can be seen in the table below. The p-value represents the probability that that the result would have been found if the correlation coefficient was 0.
@@ -123,6 +131,7 @@ Furthermore, the Pearson correlation coefficient was computed for all participan
  Overall & -0.22 & 0.11 \\ 
  \hline
  Healthy & -0.30 & 0.23 \\
+ \hline
  MDD & -0.13 & 0.46 \\ [1ex] 
  \hline
 \end{tabular}
@@ -140,6 +149,7 @@ A two-sample T-test between the healthy and MDD groups was performed for both th
   & T-statistic & p-value  \\ [0.5ex] 
  \hline\hline
  LR & 1.33 & 0.19 \\
+ \hline
  NE & -0.66 & 0.51 \\ [1ex] 
  \hline
 \end{tabular}
