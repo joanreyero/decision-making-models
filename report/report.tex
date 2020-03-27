@@ -60,7 +60,7 @@ Therefore, the expected number of rewards is lower than the average rewards obta
 \end{tabular}
 \end{center}
 
-\section{Simulated data exploration}
+\subsection{Simulated data exploration}
 
 Figure \ref{fig:2.2} shows the average evolution of $V^A$, $V^B$ and $V^A - V^B$ for a simulation ran 100 times with 240 trials each. The trends clearly show that learning is happening with each probability switch, as when $V^A$ increases $V^B$ decreases and vice-versa. Moreover, it can be observer that when $P(\mathrm{R} | A) = 0.5 $ and $P(\mathrm{R} | B) = 0.75$ the learning happens slower than when $P(\mathrm{R} | A) = 0.75 $ and $P(\mathrm{R} | B) = 0.25$, as the difference in the probabilities is lower.
 
@@ -76,7 +76,32 @@ The average number of rewards was 154.2.
 
 \subsection{Parameter exploration}
 
+For the parameter exploration, the values for the parameters were assigned:
 
+\begin{description}
+\item[$\epsilon_{\mathrm{values}}$:] linear space of 10 elements with range $[0, 1]$, 
+\item[$\beta_{\mathrm{values}}$:] linear space of 15 elements with range $[1, 15]$.
+\end{description}
+
+Then, a simulation with 100 participants was performed for each pair of parameter values. 
+
+\begin{figure}[h!]
+	\centering
+	\hspace*{-2.2in}
+	\includegraphics[width=1.5\linewidth]{figures/2.3.pdf}
+	\caption{Plot of the number of rewards for each learning rate and negative energy pair. The two subplots correspond to two different angles to improve visibility.}
+	\label{fig:2.3}
+\end{figure}
+
+Figure \ref{fig:2.3} shows the amount of reward of each pair of parameters. The reward increases as the negative energy increases from 0 to 10, and it stabilises afterwards. The learning rate also increases the reward as it increases up to a threshold of around 0.7, then the reward decreases as the learning rate increases.
+
+\subsection{Model fitting}
+
+\subsubsection{Negative log likelihood}
+
+The negative log likelihood (NNL), using the formula provided in the report, was computed for the first participant, and it was 52 to two significant figures. 
+
+For the second participant, the NNL was 63.83.
 
 
 
