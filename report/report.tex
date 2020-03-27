@@ -95,13 +95,63 @@ Then, a simulation with 100 participants was performed for each pair of paramete
 
 Figure \ref{fig:2.3} shows the amount of reward of each pair of parameters. The reward increases as the negative energy increases from 0 to 10, and it stabilises afterwards. The learning rate also increases the reward as it increases up to a threshold of around 0.7, then the reward decreases as the learning rate increases.
 
-\subsection{Model fitting}
-
-\subsubsection{Negative log likelihood}
+\subsection{Negative log likelihood}
 
 The negative log likelihood (NNL), using the formula provided in the report, was computed for the first participant, and it was 52 to two significant figures. 
 
 For the second participant, the NNL was 63.83.
+
+\subsection{Model fitting and group comparison}
+
+\subsubsection{Model fitting}
+
+The model was fit using the function \texttt{scipy.minimize} with the \texttt{BFGS} minimisation method \footnote{https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html}. $\epsilon = 0.5$ and $\beta = 5$ were used as starting parameters.
+
+The minimisation algorithm encountered an overflow for most participants when running completely unconstrained. Therefore, the learning rate was constrained to being greater than 0, as there cannot be negative learning rates.
+
+The mean learning rate (LR) found was 0.36, with a standard deviation of 0.123. The mean negative energy (NE) was 5.83, with a standard deviation of 1.25. 
+
+Figure \ref{fig:2.4} shows the best-fit LR an NE for each participant, with considerably more variability in the MDD participants than in the healthy. It can also be observed that participant 8 has a value of 0 for both the LR and NE, this is because a filtering function was implemented to remove from the best-fit parameters those participants who did not fall within the normal range. The zero values seen in the plot are simply to keep the number of the participants constant, they were not taken into account for the reported statistics. 
+
+Furthermore, the Pearson correlation coefficient was computed for all participants, and for the healthy and MDD participants together. The results can be seen in the table below. The p-value represents the probability that that the result would have been found if the correlation coefficient was 0.
+
+\begin{center}
+ \begin{tabular}{|c || c | c |} 
+ \hline
+  & Pearson correlation coefficient & p-value  \\ [0.5ex] 
+ \hline\hline
+ Overall & -0.22 & 0.11 \\ 
+ \hline
+ Healthy & -0.30 & 0.23 \\
+ MDD & -0.13 & 0.46 \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+There are no strong correlations between the best-fit LR and NE for any of the groups, which indicates that the optimisation algorithm functioned as expected, as high correlations would indicate anomalies in the data or the optimisation. 
+
+\subsubsection{Group comparison}
+
+A two-sample T-test between the healthy and MDD groups was performed for both the LR and the EPS. The null hypothesis was that $\mu_{\mathrm{healthy}} = \mu_{\mathrm{MDD}}$. The degrees of freedom in both cases were 16 (as only 17 MDD patients were considered). The results of the T-statistic and the p-value can be seen in the table below:
+
+\begin{center}
+ \begin{tabular}{|c || c | c |} 
+ \hline
+  & T-statistic & p-value  \\ [0.5ex] 
+ \hline\hline
+ LR & 1.33 & 0.19 \\
+ NE & -0.66 & 0.51 \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+There is only a 0.19 probability that the null hypothesis is true for the LR, therefore we can probably reject the null hypothesis and say that there is a difference between both means.
+
+On the other hand, for the NE there is a 0.51 probability that the null hypothesis is true. Thus, we cannot accept nor reject the null hypothesis or establish a difference between groups.
+
+
+
+
 
 
 
