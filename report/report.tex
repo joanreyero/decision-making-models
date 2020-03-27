@@ -60,6 +60,24 @@ Therefore, the expected number of rewards is lower than the average rewards obta
 \end{tabular}
 \end{center}
 
+\section{Simulated data exploration}
+
+Figure \ref{fig:2.2} shows the average evolution of $V^A$, $V^B$ and $V^A - V^B$ for a simulation ran 100 times with 240 trials each. The trends clearly show that learning is happening with each probability switch, as when $V^A$ increases $V^B$ decreases and vice-versa. Moreover, it can be observer that when $P(\mathrm{R} | A) = 0.5 $ and $P(\mathrm{R} | B) = 0.75$ the learning happens slower than when $P(\mathrm{R} | A) = 0.75 $ and $P(\mathrm{R} | B) = 0.25$, as the difference in the probabilities is lower.
+
+\begin{figure}[h!]
+	\centering
+	\hspace*{-0.4in}
+	\includegraphics[width=1\linewidth]{figures/2.2.pdf}
+	\caption{Plot of the average evolution of $V^A$ (top left), $V^B$ (bottom left) and $V^A - V^B$ (right), for a simulation ran 100 times with 240 trials. The golden dotted lines represent a switch in the probabilities.}
+	\label{fig:2.2}
+\end{figure}
+
+The average number of rewards was 154.2.
+
+\subsection{Parameter exploration}
+
+
+
 
 
 \bibliography{bib}
