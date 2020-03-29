@@ -4,8 +4,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{amsmath}
-\usepackage[margin=0.5in]{geometry}
 \pagenumbering{gobble}
+\usepackage[margin=0.5in]{geometry}
+
 %\usepackage{geometry}
 \usepackage{pdfpages}
 \usepackage{xcolor}
@@ -17,6 +18,8 @@
 \author{Joan Reyero}
 %\date{\today}
 
+\newtheorem*{theorem}{Theorem}
+
 
 \bibliographystyle{apalike}
 %\bibliography{bib}
@@ -27,6 +30,21 @@
 \maketitle
 
 \section{Reinforcement learning models}
+
+The behaviour of the participants was modelled using a reinforcement learning model, in which the value of the chosen stimulus $i$ was updates on trial $t$ after observing reward $r$ according to equation \ref{eq:0.0}. The initial values $V_0$ are set to 0.
+
+\begin{equation}
+    V_t^i = V_t^i + \epsilon + (r_t - V_t^i)
+    \label{eq:0.0}
+\end{equation}
+
+The probability of choosing stimulus $A$ on trial $t$ is modelled by equation \ref{eq:0.1}
+
+\begin{equation}
+    P(\text{action } A | V_t, \beta) = \frac{\mathrm{exp}(\beta \times V_t^A)}{\mathrm{exp}(\beta \times V_t^A) + \mathrm{exp}(\beta \times V_t^B)}
+    \label{eq:0.1}
+\end{equation}
+
 
 \subsection{Data exploration}
 
@@ -163,13 +181,91 @@ On the other hand, for the NE there is a 0.51 probability that the null hypothes
 
 For the parameter recovery 53 pairs of parameters were obtained randomly from a normal distribution. Then, 53 data-sets instances of 10 participants each were simulated. For each instance, the average best-fit parameters were computed.
 
+\begin{figure}[h!]
+	\centering
+	\hspace*{-0.6in}
+	\includegraphics[width=1.15\linewidth]{figures/2.5.0.pdf}
+	\caption{Distribution of the LR (left) and the NE (right) randomly sampled from normal distributions.}
+	\label{fig:2.5.0}
+\end{figure}
+
+
 Figure \ref{fig:2.5.0} shows the distribution of the starting LRs and NEs. There are no values outside the expected ranges, thus no values were re-sampled.
 
 The Pearson correlation coefficient between the starting and the best-fit LRs is 0.56, with a p-value of $10^{-16}$ there is a strong correlation with a very small probability that there is no correlation.
 
 For the NEs, the Pearson correlation coefficient is 0.89 with a p-value of $10^{-19}$: the correlation is even stronger with a negligent probability that there is no correlation. The same information is illustrated in figure \ref{fig:2.5.1}
 
+\begin{figure}[h!]
+	\centering
+	\hspace*{-0.6in}
+	\includegraphics[width=1.15\linewidth]{figures/2.5.1.pdf}
+	\caption{Relationship between the randomly sampled starting parameters and the best-fit parameters between for the LR (left) and the NE (right). The golden line represents the line of best fit.}
+	\label{fig:2.5.1}
+\end{figure}
 
+\subsection{Additional models}
+
+Two additional models were considered to fit the data. The first model got rid of the negative energy parameter (equation \ref{eq:1.1} when calculating the probability and introduced a new parameter when calculating the reinforcement learning values: a reward sensitivity (RS) parameter (equation \ref{eq:1.0}). The second model used the same equations as the initial one, but it has initial reinforcement learning values other $V_0 = (V^A_0, V^B_0)$. 
+
+\begin{equation}
+    V_t^i = V_t^i + \epsilon + (\rho \times r_t - V_t^i)
+    \label{eq:1.0}
+\end{equation}
+
+\begin{equation}
+    P(\text{action } A | V_t) = \frac{\mathrm{exp}(V_t^A)}{\mathrm{exp}(V_t^A) + \mathrm{exp}(V_t^B)}
+    \label{eq:1.1}
+\end{equation}
+
+\subsubsection{Model 1}
+
+To fit the model 1 the starting parameters chosen were $\epsilon=0.5$, as in model 0, and $\rho=5.5$, as given in the course lectures.
+
+\begin{center}
+ \begin{tabular}{|c || c | c | c| c |} 
+ \hline
+  & Pearson correlation coefficient & p-value  \\ [0.5ex] 
+ \hline\hline
+ Overall & -0.21 & 0.14  \\ 
+ \hline
+ Healthy & -0.13 & 0.48 \\
+ \hline
+ MDD & -0.33 & 0.48 \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+ \begin{tabular}{|c || c | c |} 
+ \hline
+  & T-statistic & p-value  \\ [0.5ex] 
+ \hline\hline
+ LR & 1.33 & 0.19 \\
+ \hline
+ RS & 0.31 & 0.76 \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+\begin{figure}[h!]
+	\centering
+	\hspace*{-0.6in}
+	\includegraphics[width=1.1\linewidth]{figures/2.4.pdf}
+	\caption{Best-fit learning rate (top) and negative energy (bottom) for healthy and MDD participants. The participants with 0 values were filtered-out because the best-fits were outside the normal range of $(0,1)$ for the LR and $(1, 15)$ for the NE.}
+	\label{fig:2.4}
+\end{figure}
+
+
+%\begin{theorem}
+%The negative log likelihood for the actions of a participant will be the same using model 0 (equations \ref{eq:0.0} and %\ref{eq:0.1}) or model 1 (equations \ref{eq:1.0} and \ref{eq:1.1}). 
+%\end{theorem}
+
+%\begin{proof}
+
+
+
+%\end{proof}
 
 \bibliography{bib}
 
