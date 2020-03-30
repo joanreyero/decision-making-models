@@ -314,6 +314,39 @@ As in the previous two models, there is a statistically significant difference b
 
 \subsection{Model Comparison}
 
+To perform model comparison the data was fit using the three models. Then, for each model the $AIC$ and $BIC$ scores were computed to see which model fit the data best. 
+
+Each of the three models was fit, the negative log likelihood was computed, and the scores for each model were obtained using equations \ref{eq:aic} and \ref{eq:bic}.
+
+\begin{equation}
+\label{eq:aic}
+AIC = \sum_{\forall \mathrm{ppts}} 2 \times NLL + 2 p = 2 p \times |\mathrm{ppts}|  + 2 \sum_\mathrm{\forall \mathrm{ppts}} NLL
+\end{equation}
+
+\begin{equation}
+BIC = \sum_{\forall \mathrm{ppts}} 2 \times NLL + 2 \log(n) =  p \times \log(n) \times |\mathrm{ppts}|  + 2 \sum_\mathrm{\forall \mathrm{ppts}} NLL
+\label{eq:bic}
+\end{equation}
+
+The results are shown in the table below.
+
+
+\begin{center}
+ \begin{tabular}{|c || c | c | c |} 
+ \hline
+  & Model 0 & Model 1 & Model 2  \\ [0.5ex] 
+ \hline\hline
+ $AIC$ & 8377 & 8633 & 8610 \\
+ \hline
+ $BIC$ & 33129 & 33385 & 33362 \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+According to the material in lectures, there is a winning model if the difference in scores between models is $\>$ 10. However, since we have added scores for 53 participants, we would expect a difference between models $\> 530$. Model 0 has the lowest scores, but greatest difference between any Model 0 scores and any other score is always smaller than 300. 
+
+From this we can conclude that Model 0 might be the best fitting model to the data, but we would need extra 
+
 %\begin{theorem}
 %The negative log likelihood for the actions of a participant will be the same using model 0 (equations \ref{eq:0.0} and %\ref{eq:0.1}) or model 1 (equations \ref{eq:1.0} and \ref{eq:1.1}). 
 %\end{theorem}
