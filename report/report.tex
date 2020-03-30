@@ -122,6 +122,7 @@ For the second participant, the NNL was 63.83.
 \subsection{Model fitting and group comparison}
 
 \subsubsection{Model fitting}
+\label{sec:fit-model-0}
 
 The model was fit using the function \texttt{scipy.minimize} with the \texttt{BFGS} minimisation method \footnote{https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html}. $\epsilon = 0.5$ and $\beta = 5$ were used as starting parameters.
 
@@ -158,7 +159,7 @@ Furthermore, the Pearson correlation coefficient was computed for all participan
 There are no strong correlations between the best-fit LR and NE for any of the groups, which indicates that the optimisation algorithm functioned as expected, as high correlations would indicate anomalies in the data or the optimisation. 
 
 \subsubsection{Group comparison}
-
+\label{sec:t-model-0}
 A two-sample T-test between the healthy and MDD groups was performed for both the LR and the EPS. The null hypothesis was that $\mu_{\mathrm{healthy}} = \mu_{\mathrm{MDD}}$. The degrees of freedom in both cases were 16 (as only 17 MDD patients were considered). The results of the T-statistic and the p-value can be seen in the table below:
 
 \begin{center}
@@ -166,9 +167,9 @@ A two-sample T-test between the healthy and MDD groups was performed for both th
  \hline
   & T-statistic & p-value  \\ [0.5ex] 
  \hline\hline
- LR & 1.33 & 0.19 \\
+ LR ($\epsilon$) & 1.33 & 0.19 \\
  \hline
- NE & -0.66 & 0.51 \\ [1ex] 
+ NE ($\beta$) & -0.66 & 0.51 \\ [1ex] 
  \hline
 \end{tabular}
 \end{center}
@@ -176,6 +177,10 @@ A two-sample T-test between the healthy and MDD groups was performed for both th
 There is only a 0.19 probability that the null hypothesis is true for the LR, therefore we can probably reject the null hypothesis and say that there is a difference between both means.
 
 On the other hand, for the NE there is a 0.51 probability that the null hypothesis is true. Thus, we cannot accept nor reject the null hypothesis or establish a difference between groups.
+
+Research about the effect of the LR has arrived to contradictory conclusions. \cite{chase2010approach} found a reduced learning rate in middle-aged MDD patients using a probabilistic selection task, which would be consistent with the findings in this report. However, \cite{gradin} found no difference in the LR between MDD patients and healthy controls, and \cite{dombrovski2010reward} found that there was only a difference between groups for the punishment LR, not the reward LR that is being considered in this report.
+
+Moreover, \cite{series} found that the main impairments were the NE, which did not show as a differentiating factor in our findings, and a memory parameter that was not taken into account in our models.
 
 \subsection{Parameter recovery}
 
@@ -222,6 +227,8 @@ Two additional models were considered to fit the data. The first model got rid o
 
 To fit the model 1 the starting parameters chosen were $\epsilon=0.5$, as in model 0, and $\rho=5.5$, as given in the course lectures.
 
+The table below shows the Pearson correlation coefficient between the two fit parameters for all participants, healthy participants, and MDD participants. There is not a strong correlation between any, which, as discussed in section \ref{sec:fit-model-0}, was expected.
+
 \begin{center}
  \begin{tabular}{|c || c | c | c| c |} 
  \hline
@@ -236,14 +243,47 @@ To fit the model 1 the starting parameters chosen were $\epsilon=0.5$, as in mod
 \end{tabular}
 \end{center}
 
+\begin{figure}[h!]
+	\centering
+	\hspace*{-0.6in}
+	\includegraphics[width=1.1\linewidth]{figures/2.6.1.pdf}
+	\caption{Best-fit learning rate (top) and negative energy (bottom) for healthy and MDD participants. The participants with 0 values were filtered-out because the best-fits were outside the normal range of $(0,1)$ for the LR and $(1, 15)$ for the NE.}
+	\label{fig:2.6.1}
+\end{figure}
+
+Figure \ref{fig:2.6.1} shows the best fit LR and RS for all participants. It can be observed that more participants had values outiside the normal range and had to be discarded than with model 0. There is a lot more variability between MDD than between healthy participants for the LR, which was to be expected from model 0. The distribution of the RS, however, seems to be very similar between groups. A two sample T-test as in section \ref{sec:t-model-0} was performed to get better insights about the group differences. The results can be seen in the table below.
+
 \begin{center}
  \begin{tabular}{|c || c | c |} 
  \hline
   & T-statistic & p-value  \\ [0.5ex] 
  \hline\hline
- LR & 1.33 & 0.19 \\
+ LR ($\epsilon$) & 1.33 & 0.19 \\
  \hline
- RS & 0.31 & 0.76 \\ [1ex] 
+ RS ($\rho$) & 0.31 & 0.76 \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+
+There is a statistically significant difference between the menans of the LR for healthy and MDD participants at an 80\% confidence level. However, there seems to be no difference in the RS between the groups. These results were surprising as research has found that when performing a probabilistic reward task to asses reward learning, participants with MDD had reduced reward sensitivity and hence performed worse \cite{rho} .
+
+\subsubsection{Model 2}
+
+To fit the model 2 the $\epsilon$ and $\beta$ parameters were 0.5 and 5.5 respectively, as in model 0. However, the starting reinforcement learning values were $(0.3, 0.1)$. $A$ was given a bigger starting value than $B$ because the there is a bias in the given probabilities towards choice $A$. 
+
+The table below shows the Pearson correlation coefficient between the two fit parameters for all participants, healthy participants, and MDD participants. As with the previous two models, there are no strong correlations.
+
+\begin{center}
+ \begin{tabular}{|c || c | c | c| c |} 
+ \hline
+  & Pearson correlation coefficient & p-value  \\ [0.5ex] 
+ \hline\hline
+ Overall & -0.26 & 0.07  \\ 
+ \hline
+ Healthy & -0.13 & 0.46 \\
+ \hline
+ MDD & -0.34 & 0.16 \\ [1ex] 
  \hline
 \end{tabular}
 \end{center}
@@ -251,11 +291,28 @@ To fit the model 1 the starting parameters chosen were $\epsilon=0.5$, as in mod
 \begin{figure}[h!]
 	\centering
 	\hspace*{-0.6in}
-	\includegraphics[width=1.1\linewidth]{figures/2.4.pdf}
+	\includegraphics[width=1.1\linewidth]{figures/2.6.1.pdf}
 	\caption{Best-fit learning rate (top) and negative energy (bottom) for healthy and MDD participants. The participants with 0 values were filtered-out because the best-fits were outside the normal range of $(0,1)$ for the LR and $(1, 15)$ for the NE.}
-	\label{fig:2.4}
+	\label{fig:2.6.2}
 \end{figure}
 
+Figure \ref{fig:2.6.2} shows the best-fit parameters for all participants. We can, again, observe more variability between groups in the LR than in the NE, which seems to be uniform. The results of the two-sample T-test can be seen below.
+
+\begin{center}
+ \begin{tabular}{|c || c | c |} 
+ \hline
+  & T-statistic & p-value  \\ [0.5ex] 
+ \hline\hline
+ LR ($\epsilon$) & 1.51 & 0.14 \\
+ \hline
+ NE ($\beta$) & -0.5 & 0.61 \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+As in the previous two models, there is a statistically significant difference between groups at an 86\% confidence level for the LR. There does not seem to be a difference for the NE.
+
+\subsection{Model Comparison}
 
 %\begin{theorem}
 %The negative log likelihood for the actions of a participant will be the same using model 0 (equations \ref{eq:0.0} and %\ref{eq:0.1}) or model 1 (equations \ref{eq:1.0} and \ref{eq:1.1}). 
@@ -266,6 +323,8 @@ To fit the model 1 the starting parameters chosen were $\epsilon=0.5$, as in mod
 
 
 %\end{proof}
+\newpage
+
 
 \bibliography{bib}
 
