@@ -5,6 +5,11 @@ For the full code and explanation see `decision-making-models.ipynb`
 
 Running instructions:
 
+- Clone the repository: `https://github.com/joanreyero/decision-making-models.git`
+- Go to the folder: `cd decision-making-models`
+- Install dependencies: `sudo pip install -r requirements.txt`
+- Open the notebook: `jupyter notebook decision-making-models.ipynb`
+
 
 
 ## Reinforcement learning model
