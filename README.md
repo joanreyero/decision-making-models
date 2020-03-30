@@ -78,7 +78,7 @@ Model comparison and model recovery is performed to determine the best-fitting m
 
 ## Drift Decision process
 
-Decision processes can be modeled using a drife-diffusion process. When an individual is asked to make a binary choice on the basis of an available stimulus, the assumption is that evidence from the stimulus is accumulated over time and a decision is made as soon as an upper or lower boundary is reached. Which boundary is reached determines which response is given and the time required to reach it determines the response time.
+Decision processes can be modeled using a drife-diffusion process (see [[Smith and Ratcliff, 2014](https://www.sciencedirect.com/science/article/pii/S0166223604000220)]). When an individual is asked to make a binary choice on the basis of an available stimulus, the assumption is that evidence from the stimulus is accumulated over time and a decision is made as soon as an upper or lower boundary is reached. Which boundary is reached determines which response is given and the time required to reach it determines the response time.
 
 To model a decision process between two hypotheses, *h+* and *h-*, we use a Wienet diffusion process *W(t)* with drift rate *v* and standard deviation *s*, simulated using
 
